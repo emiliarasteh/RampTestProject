@@ -15,22 +15,45 @@ import DateComponent from './DateComponent';
 
  function Design() {
 
-  const [inputValue, setInputValue] = useState('its normal')
+  const [inputValue, setInputValue] = useState(false)
+  
+  useEffect(() => {
+    document.title = `${inputValue}`}
+    ,[inputValue])
 
   const handleNext = () => {
 
     if (inputValue === false) {
-  
       setInputValue(["test1", "test2", "test3"]);
       
     }else if(inputValue instanceof Array){
       setInputValue('its normal');
+
     }else{
       setInputValue(false);
 
     } 
+   
+  
   };
 
+  const handlePrev = () => {
+
+    if  (inputValue instanceof Array){
+      setInputValue('its normal');
+    
+    }else if 
+    (inputValue === false) {
+  
+      setInputValue(["test1", "test2", "test3"]);
+      
+    }else{
+      setInputValue(false);
+        
+
+    } 
+  
+  };
  
   const theme = useTheme();
 
@@ -51,7 +74,7 @@ import DateComponent from './DateComponent';
          </Typography>
         </CardContent>
         <Box sx={{ display: 'contents', alignItems: 'center', pl: 1, pb: 1 }}>
-          <IconButton aria-label="previous">
+          <IconButton onClick={handlePrev} aria-label="previous">
             {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
           </IconButton>
           <IconButton onClick={handleNext} aria-label="next">

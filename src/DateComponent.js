@@ -3,12 +3,14 @@ import React, {useState, useEffect} from "react";
 const DateComponent = (props) => {
   const [date, setDate] = useState(new Date())
 
-useEffect(() => {
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDate(new Date());
+    }, 1000);
+    
+    return () => clearInterval(interval);
+  }, []);
 
-  const DateDisplay = setInterval(() => {setDate(new Date(), 1000)})
-
-
-})
 
 if (props.input === false) {
   return(
